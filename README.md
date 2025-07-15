@@ -41,8 +41,7 @@ You can deploy this template by setting up the following services and adding the
       (deep link also available in your terminal). Paste the Issuer URL as the value and click "Save".
 4. Now your frontend and backend should be running and you should be able to log in but not record.
 5. Make a [Together](https://togetherai.link) account to get your [API key](https://api.together.xyz/settings/api-keys).
-6. Make a [Replicate](https://replicate.com) account to get your [API key](https://replicate.com/account/api-tokens).
-7. Save your environment variables in Convex [as `REPLICATE_API_KEY` and `TOGETHER_API_KEY`](https://dashboard.convex.dev/deployment/settings/environment-variables?var=REPLICATE_API_KEY&var=TOGETHER_API_KEY).
+6. Save your environment variables in Convex [`TOGETHER_API_KEY`](https://dashboard.convex.dev/deployment/settings/environment-variables?var=TOGETHER_API_KEY).
 
 ## Future tasks:
 

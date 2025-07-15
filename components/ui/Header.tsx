@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { UserNav } from './UserNav';
-import { currentUser } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs/server';
 
 export default async function Header() {
   const user = await currentUser();
