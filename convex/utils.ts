@@ -47,7 +47,7 @@ async function getUserId(ctx: { auth: Auth }) {
 export const envVarsMissing = query({
   args: {},
   handler: async () => {
-    if (process.env.REPLICATE_API_KEY && process.env.TOGETHER_API_KEY) {
+    if (process.env.TOGETHER_API_KEY) {
       return null;
     }
     const deploymentName = process.env.CONVEX_CLOUD_URL?.slice(8).replace(
@@ -57,7 +57,7 @@ export const envVarsMissing = query({
     return (
       'https://dashboard.convex.dev/d/' +
       deploymentName +
-      `/settings/environment-variables?var=REPLICATE_API_KEY&var=TOGETHER_API_KEY`
+      `/settings/environment-variables?var=TOGETHER_API_KEY`
     );
   },
 });

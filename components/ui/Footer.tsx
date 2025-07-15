@@ -10,22 +10,15 @@ export default function Footer() {
           target="_blank"
           className="font-bold transition hover:text-black/50"
         >
-          Convex,{' '}
-        </a>
+          Convex{' '}
+        </a>{' '}
+        and{' '}
         <a
           href="https://togetherai.link"
           target="_blank"
           className="font-bold transition hover:text-black/50"
         >
-          Together
-        </a>
-        , and{' '}
-        <a
-          href="https://www.replicate.com"
-          target="_blank"
-          className="font-bold transition hover:text-black/50"
-        >
-          Replicate
+          Together.ai
         </a>
       </div>
       <div className="flex space-x-4 pb-4 sm:pb-0">

@@ -18,11 +18,10 @@
 
 - [Convex](https://convex.dev/) for the database and cloud functions
 - Next.js [App Router](https://nextjs.org/docs/app) for the framework
-- [Together Inference](https://togetherai.link) for the LLM (Mixtral)
+- [Together Inference](https://togetherai.link) for the LLM (Mixtral) and for Whisper transcriptions
 - [Together Embeddings](https://togetherai.link) for the embeddings for search
 - [Convex File Storage](https://docs.convex.dev/file-storage) for storing voice notes
 - [Convex Vector search](https://docs.convex.dev/vector-search) for vector search
-- [Replicate](https://replicate.com/) for Whisper transcriptions
 - [Clerk](https://clerk.dev/) for user authentication
 - [Tailwind CSS](https://tailwindcss.com/) for styling
 
