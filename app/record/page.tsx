@@ -113,7 +113,8 @@ const RecordVoicePage = () => {
         </div>
         <div className="z-50 flex h-fit w-fit flex-col items-center justify-center">
           <h1 className="text-[60px] leading-[114.3%] tracking-[-1.5px] text-light">
-              {formatTime(Math.floor(totalSeconds / 60))}:{formatTime(totalSeconds % 60)}
+            {formatTime(Math.floor(totalSeconds / 60))}:
+            {formatTime(totalSeconds % 60)}
           </h1>
         </div>
       </div>
@@ -164,13 +165,13 @@ function MissingEnvVars(props: { url: string }) {
         </div>
         <div className="ml-3">
           <h3 className="text-sm font-medium text-yellow-800">
-            Missing Environment Variables
+            Missing Environment Variable
           </h3>
           <div className="mt-2 text-sm text-yellow-700">
             <p>
               Set up your{' '}
               <a className="underline" target="_blank" href={props.url}>
-                Convex environment variables here
+                Convex environment variable here
               </a>{' '}
               with API keys from{' '}
               <a
@@ -180,14 +181,6 @@ function MissingEnvVars(props: { url: string }) {
               >
                 Together.ai
               </a>{' '}
-              and{' '}
-              <a
-                className="underline"
-                target="_blank"
-                href="https://replicate.com/account/api-tokens"
-              >
-                Replicate
-              </a>
               .
             </p>
           </div>

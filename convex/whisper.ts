@@ -2,12 +2,23 @@
 
 import { internalAction, internalMutation } from './_generated/server';
 import { v } from 'convex/values';
-import Replicate from 'replicate';
+import { Together } from 'together-ai';
 import { api, internal } from './_generated/api';
 
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_KEY,
-});
+const baseSDKOptions: ConstructorParameters<typeof Together>[0] = {
+  apiKey: process.env.TOGETHER_API_KEY,
+};
+
+// Helicone on Convex works? or not?
+// if (process.env.HELICONE_API_KEY) {
+//   baseSDKOptions.baseURL = 'https://together.helicone.ai/v1';
+//   baseSDKOptions.defaultHeaders = {
+//     'Helicone-Auth': `Bearer ${process.env.HELICONE_API_KEY}`,
+//     'Helicone-Property-Appname': 'notesGpt',
+//   };
+// }
+
+const togetherAiClient = new Together(baseSDKOptions);
 
 interface whisperOutput {
   detected_language: string;
@@ -22,26 +33,14 @@ export const chat = internalAction({
     id: v.id('notes'),
   },
   handler: async (ctx, args) => {
-    const replicateOutput = (await replicate.run(
-      'openai/whisper:4d50797290df275329f202e48c76360b3f22b08d28c196cbc54600319435f8d2',
-      {
-        input: {
-          audio: args.fileUrl,
-          model: 'large-v3',
-          translate: false,
-          temperature: 0,
-          transcription: 'plain text',
-          suppress_tokens: '-1',
-          logprob_threshold: -1,
-          no_speech_threshold: 0.6,
-          condition_on_previous_text: true,
-          compression_ratio_threshold: 2.4,
-          temperature_increment_on_fallback: 0.2,
-        },
-      },
-    )) as whisperOutput;
+    const res = await togetherAiClient.audio.transcriptions.create({
+      // @ts-ignore: Together API accepts file URL as string, even if types do not allow
+      file: args.fileUrl,
+      model: 'openai/whisper-large-v3',
+      language: 'en',
+    });
 
-    const transcript = replicateOutput.transcription || 'error';
+    const transcript = (res.text as string) || 'error';
 
     await ctx.runMutation(internal.whisper.saveTranscript, {
       id: args.id,
